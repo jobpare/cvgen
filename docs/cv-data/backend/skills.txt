@@ -1,0 +1,85 @@
+# Programming Languages
+Python
+Java
+JavaScript
+TypeScript
+Go
+Rust
+C#
+C++
+PHP
+Ruby
+Scala
+Kotlin
+Swift
+
+# Frameworks & Libraries
+Django
+Flask
+FastAPI
+Spring Boot
+Express.js
+Node.js
+React
+Vue.js
+Angular
+Laravel
+Ruby on Rails
+ASP.NET Core
+Gin (Go)
+Actix (Rust)
+
+# Databases
+PostgreSQL
+MySQL
+MongoDB
+Redis
+SQLite
+Oracle
+SQL Server
+Cassandra
+DynamoDB
+Elasticsearch
+Neo4j
+
+# Cloud Platforms
+AWS
+Azure
+Google Cloud Platform
+Heroku
+DigitalOcean
+Vercel
+Netlify
+Docker
+Kubernetes
+
+# Tools & Technologies
+Git
+GitHub
+GitLab
+Bitbucket
+Jenkins
+GitHub Actions
+GitLab CI/CD
+Docker
+Kubernetes
+Terraform
+Ansible
+Prometheus
+Grafana
+Jira
+Confluence
+Postman
+Swagger
+REST APIs
+GraphQL
+Microservices
+Event-Driven Architecture
+Message Queues (RabbitMQ, Kafka)
+Redis
+Nginx
+Apache
+Linux
+Shell Scripting
+Bash
+PowerShell 

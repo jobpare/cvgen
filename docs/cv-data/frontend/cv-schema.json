@@ -1,0 +1,121 @@
+{
+  "personal_info": {
+    "name": "Sarah Chen",
+    "position": "Senior Frontend Developer",
+    "email": "sarah.chen@email.com",
+    "phone": "+1 (555) 987-6543",
+    "location": "New York, NY",
+    "linkedin": "linkedin.com/in/sarahchen",
+    "github": "github.com/sarahchen",
+    "portfolio": "sarahchen.dev"
+  },
+  "summary": {
+    "professional_summary": "Creative and detail-oriented frontend developer with 6+ years of experience building responsive, accessible, and performant web applications. Specialized in React, TypeScript, and modern CSS. Passionate about user experience, design systems, and staying current with frontend technologies."
+  },
+  "experience": [
+    {
+      "company": "Digital Innovations Inc",
+      "position": "Senior Frontend Developer",
+      "location": "New York, NY",
+      "start_date": "03/2021",
+      "end_date": "Present",
+      "description": "Leading frontend development for a SaaS platform with 50K+ active users",
+      "achievements": [
+        "Architected and implemented a design system using React and Storybook, reducing development time by 30%",
+        "Optimized application performance, achieving 95+ Lighthouse scores across all metrics",
+        "Led migration from JavaScript to TypeScript, reducing runtime errors by 60%",
+        "Mentored 4 junior developers and established frontend coding standards"
+      ]
+    },
+    {
+      "company": "WebFlow Solutions",
+      "position": "Frontend Developer",
+      "location": "Remote",
+      "start_date": "06/2019",
+      "end_date": "02/2021",
+      "description": "Developed responsive web applications and e-commerce solutions",
+      "achievements": [
+        "Built 15+ responsive websites using React, Next.js, and modern CSS",
+        "Implemented PWA features increasing user engagement by 40%",
+        "Created reusable component library used across 8 projects",
+        "Collaborated with designers to implement pixel-perfect UI designs"
+      ]
+    },
+    {
+      "company": "Creative Agency XYZ",
+      "position": "Junior Frontend Developer",
+      "location": "Boston, MA",
+      "start_date": "08/2018",
+      "end_date": "05/2019",
+      "description": "Developed frontend features for client websites and applications",
+      "achievements": [
+        "Built interactive UI components using vanilla JavaScript and CSS",
+        "Implemented responsive designs for mobile-first approach",
+        "Optimized website loading speeds by 50% through image optimization",
+        "Worked with cross-functional teams in agile development environment"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Massachusetts Institute of Technology",
+      "degree": "Bachelor of Science",
+      "field_of_study": "Computer Science",
+      "graduation_date": "05/2018",
+      "gpa": "3.9/4.0"
+    }
+  ],
+  "skills": {
+    "programming_languages": ["JavaScript", "TypeScript", "HTML5", "CSS3"],
+    "frameworks": ["React", "Next.js", "Vue.js", "Angular", "Svelte"],
+    "libraries": ["Redux", "Zustand", "React Query", "Tailwind CSS", "Styled Components"],
+    "build_tools": ["Webpack", "Vite", "Parcel", "Babel", "ESLint"],
+    "testing": ["Jest", "React Testing Library", "Cypress", "Playwright"],
+    "soft_skills": ["UI/UX Design", "Problem Solving", "Team Collaboration", "Creative Thinking"]
+  },
+  "projects": [
+    {
+      "name": "E-commerce Platform",
+      "description": "Modern e-commerce platform built with Next.js, featuring server-side rendering, dynamic routing, and integrated payment processing.",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "Prisma"],
+      "github_url": "github.com/sarahchen/ecommerce-platform",
+      "live_url": "demo.ecommerce-platform.com"
+    },
+    {
+      "name": "Task Management App",
+      "description": "Real-time task management application with drag-and-drop functionality, team collaboration, and progress tracking.",
+      "technologies": ["React", "TypeScript", "Socket.io", "Node.js", "MongoDB"],
+      "github_url": "github.com/sarahchen/task-manager"
+    },
+    {
+      "name": "Design System",
+      "description": "Comprehensive design system with 50+ reusable components, documentation, and Storybook integration.",
+      "technologies": ["React", "Storybook", "TypeScript", "Styled Components", "Figma"],
+      "github_url": "github.com/sarahchen/design-system"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Google Developer Expert (Web Technologies)",
+      "issuer": "Google",
+      "date": "09/2023",
+      "expiry_date": null
+    },
+    {
+      "name": "AWS Certified Developer",
+      "issuer": "Amazon Web Services",
+      "date": "05/2022",
+      "expiry_date": "05/2025"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "proficiency": "Native"
+    },
+    {
+      "language": "Mandarin",
+      "proficiency": "Fluent"
+    }
+  ]
+} 

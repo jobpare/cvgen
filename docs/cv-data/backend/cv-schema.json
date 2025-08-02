@@ -1,0 +1,93 @@
+{
+  "personal_info": {
+    "name": "John Doe",
+    "position": "Senior Backend Developer",
+    "email": "john.doe@email.com",
+    "phone": "+1 (555) 123-4567",
+    "location": "San Francisco, CA",
+    "linkedin": "linkedin.com/in/johndoe",
+    "github": "github.com/johndoe",
+    "portfolio": "johndoe.dev"
+  },
+  "summary": {
+    "professional_summary": "Experienced backend developer with 5+ years building scalable web applications. Specialized in Python, Node.js, and cloud technologies. Passionate about clean code, system design, and mentoring junior developers."
+  },
+  "experience": [
+    {
+      "company": "TechCorp Inc",
+      "position": "Senior Backend Developer",
+      "location": "San Francisco, CA",
+      "start_date": "01/2022",
+      "end_date": "Present",
+      "description": "Leading backend development for a SaaS platform serving 100K+ users",
+      "achievements": [
+        "Developed microservices architecture reducing API response time by 40%",
+        "Implemented automated testing pipeline increasing code coverage to 90%",
+        "Mentored 3 junior developers and conducted code reviews"
+      ]
+    },
+    {
+      "company": "StartupXYZ",
+      "position": "Backend Developer",
+      "location": "Remote",
+      "start_date": "03/2020",
+      "end_date": "12/2021",
+      "description": "Built REST APIs and database systems for e-commerce platform",
+      "achievements": [
+        "Designed and implemented user authentication system",
+        "Optimized database queries improving performance by 60%",
+        "Integrated payment processing with Stripe API"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Technology",
+      "degree": "Bachelor of Science",
+      "field_of_study": "Computer Science",
+      "graduation_date": "05/2020",
+      "gpa": "3.8/4.0"
+    }
+  ],
+  "skills": {
+    "programming_languages": ["Python", "JavaScript", "Node.js", "SQL"],
+    "frameworks": ["Django", "Express.js", "FastAPI", "React"],
+    "databases": ["PostgreSQL", "MongoDB", "Redis"],
+    "cloud_platforms": ["AWS", "Docker", "Kubernetes"],
+    "tools": ["Git", "Jenkins", "Postman", "Jira"],
+    "soft_skills": ["Team Leadership", "Problem Solving", "Communication"]
+  },
+  "projects": [
+    {
+      "name": "Task Management API",
+      "description": "RESTful API for project management with real-time updates",
+      "technologies": ["Node.js", "Express", "MongoDB", "Socket.io"],
+      "github_url": "github.com/johndoe/task-api",
+      "live_url": "task-api.johndoe.dev"
+    },
+    {
+      "name": "E-commerce Backend",
+      "description": "Scalable backend system for online store with payment integration",
+      "technologies": ["Python", "Django", "PostgreSQL", "Stripe"],
+      "github_url": "github.com/johndoe/ecommerce-api"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Developer",
+      "issuer": "Amazon Web Services",
+      "date": "06/2023",
+      "expiry_date": "06/2026"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "proficiency": "Native"
+    },
+    {
+      "language": "Spanish",
+      "proficiency": "Intermediate"
+    }
+  ]
+} 

@@ -1,0 +1,160 @@
+# Programming Languages
+JavaScript
+TypeScript
+HTML5
+CSS3
+Sass/SCSS
+Less
+CoffeeScript
+
+# Frontend Frameworks
+React
+Vue.js
+Angular
+Svelte
+Next.js
+Nuxt.js
+Gatsby
+Remix
+Astro
+
+# State Management
+Redux
+Zustand
+Vuex
+Pinia
+MobX
+Recoil
+Jotai
+XState
+
+# UI Libraries & Components
+Material-UI
+Ant Design
+Chakra UI
+Bootstrap
+Tailwind CSS
+Styled Components
+Emotion
+CSS Modules
+Storybook
+
+# Build Tools & Bundlers
+Webpack
+Vite
+Parcel
+Rollup
+esbuild
+SWC
+Babel
+TypeScript Compiler
+
+# Package Managers
+npm
+yarn
+pnpm
+bun
+
+# Testing Frameworks
+Jest
+Vitest
+React Testing Library
+Vue Test Utils
+Cypress
+Playwright
+Selenium
+Testing Library
+
+# Performance & Optimization
+Lighthouse
+WebPageTest
+Bundle Analyzer
+Code Splitting
+Lazy Loading
+Service Workers
+PWA
+Web Workers
+
+# Design & Prototyping
+Figma
+Sketch
+Adobe XD
+InVision
+Framer
+Principle
+Protopie
+
+# Version Control
+Git
+GitHub
+GitLab
+Bitbucket
+GitHub Actions
+GitLab CI/CD
+
+# Development Tools
+VS Code
+WebStorm
+Chrome DevTools
+Firefox DevTools
+Postman
+Insomnia
+Fiddler
+
+# Accessibility
+WCAG
+ARIA
+Screen Readers
+Keyboard Navigation
+Color Contrast
+Semantic HTML
+
+# Performance Monitoring
+Google Analytics
+Hotjar
+Mixpanel
+Amplitude
+Sentry
+LogRocket
+
+# Deployment & Hosting
+Vercel
+Netlify
+GitHub Pages
+Firebase Hosting
+AWS S3
+Cloudflare Pages
+
+# APIs & Data
+REST APIs
+GraphQL
+Apollo Client
+React Query
+SWR
+Axios
+Fetch API
+
+# Animation & Graphics
+CSS Animations
+Framer Motion
+GSAP
+Three.js
+Canvas API
+SVG
+WebGL
+
+# Mobile & Responsive
+Progressive Web Apps
+Responsive Design
+Mobile-First
+Touch Events
+Viewport Meta
+Media Queries
+
+# Security
+Content Security Policy
+HTTPS
+XSS Prevention
+CSRF Protection
+Input Validation
+Secure Headers 
