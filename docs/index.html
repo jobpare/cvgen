@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobpare CV Generator</title>
+    <link rel="stylesheet" href="css/editor.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-file-alt"></i> Jobpare CV Generator</h1>
+            <p>Create and edit your CV data with ease</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Role Selector -->
+            <div class="role-selector">
+                <label for="roleSelect">Choose your role:</label>
+                <select id="roleSelect" class="role-dropdown">
+                    <option value="backend">Backend Developer</option>
+                    <option value="frontend">Frontend Developer</option>
+                    <option value="ai-ml">AI/ML Engineer</option>
+                    <option value="product-design">Product Designer</option>
+                    <option value="product-management">Product Manager</option>
+                </select>
+            </div>
+
+            <div class="editor-layout">
+                <!-- Form Editor -->
+                <div class="editor-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-edit"></i> Form Editor</h3>
+                        <button id="toggleView" class="toggle-btn">
+                            <i class="fas fa-code"></i> JSON View
+                        </button>
+                    </div>
+                    <div id="formEditor" class="panel-content">
+                        <!-- Dynamic form will be generated here -->
+                    </div>
+                </div>
+
+                <!-- JSON Editor -->
+                <div class="editor-panel" id="jsonPanel" style="display: none;">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-code"></i> JSON Editor</h3>
+                        <button id="formatJson" class="format-btn">
+                            <i class="fas fa-magic"></i> Format
+                        </button>
+                    </div>
+                    <div class="panel-content">
+                        <textarea id="jsonEditor" class="json-textarea" placeholder="Your CV JSON data will appear here..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Preview -->
+                <div class="editor-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-eye"></i> Live Preview</h3>
+                        <div class="preview-controls">
+                            <button id="refreshPreview" class="refresh-btn">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                    <div class="panel-content">
+                        <div id="previewContainer" class="preview-container">
+                            <div class="preview-placeholder">
+                                <i class="fas fa-file-alt"></i>
+                                <p>Your CV preview will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button id="validateBtn" class="btn btn-secondary">
+                    <i class="fas fa-check-circle"></i> Validate
+                </button>
+                <button id="downloadBtn" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download JSON
+                </button>
+                <button id="loadFileBtn" class="btn btn-secondary">
+                    <i class="fas fa-upload"></i> Load File
+                </button>
+                <input type="file" id="fileInput" accept=".json" style="display: none;">
+            </div>
+
+            <!-- Validation Messages -->
+            <div id="validationMessages" class="validation-messages"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+</html> 

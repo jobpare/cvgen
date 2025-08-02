@@ -6,7 +6,6 @@ yarn-error.log*
 
 # Output files
 output/
-*.html
 *.pdf
 
 # OS files

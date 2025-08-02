@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* CSS Values (compatible with all PDF generators) */
+
+      /* Font Face Declarations - Consolidated */
+      @font-face {
+        font-family: 'Inter';
+        src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2') format('woff2');
+        font-weight: 400 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        line-height: 1.4;
+        color: #000000;
+        background: #ffffff;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Utility Classes */
+      .text--bold { font-weight: bold; }
+      .text--normal { font-weight: normal; }
+      .text--small { font-size: 11px; color: #666666; }
+      .text--title { font-size: 14px; font-weight: bold; color: #000000; margin-bottom: 5px; }
+      .text--header { font-size: 18px; font-weight: bold; color: #000000; }
+      .text--name { font-size: 28px; font-weight: bold; color: #000000; margin-bottom: 5px; }
+      .text--position { font-size: 16px; color: #666666; font-weight: normal; }
+      
+      .layout--flex { display: flex; justify-content: space-between; align-items: flex-start; }
+      .layout--flex-center { display: flex; justify-content: space-between; align-items: center; }
+      
+      .margin--bottom { margin-bottom: 20px; }
+      .margin--bottom-small { margin-bottom: 15px; }
+      .margin--bottom-xs { margin-bottom: 8px; }
+      .margin--bottom-xxs { margin-bottom: 5px; }
+      .margin--bottom-3px { margin-bottom: 3px; }
+
+      /* Layout Container */
+      .cv-container {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto;
+        padding: 15mm;
+        background: #ffffff;
+        box-sizing: border-box;
+      }
+
+      .cv-wrapper {
+        background: #ffffff;
+        height: 100%;
+        padding: 0;
+      }
+
+      .cv-content {
+        width: 100%;
+      }
+
+      /* Header Section */
+      .cv-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #333333;
+      }
+
+      .cv-header__title {
+        flex: 1;
+      }
+
+      .cv-header__name {
+        font-size: 28px;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 5px;
+      }
+
+      .cv-header__position {
+        font-size: 16px;
+        color: #666666;
+        font-weight: normal;
+      }
+
+      .cv-header__contact {
+        text-align: right;
+        min-width: 200px;
+      }
+
+      /* Contact Information */
+      .contact-item {
+        margin-bottom: 8px;
+        font-size: 12px;
+      }
+
+      .contact-item__text {
+        color: #000000;
+        font-size: 12px;
+      }
+
+      /* Main Layout */
+      .cv-layout {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .cv-main {
+        width: 65%;
+        float: left;
+      }
+
+      .cv-sidebar {
+        width: 30%;
+        float: right;
+        margin-left: 5%;
+      }
+
+      /* Section Containers */
+      .cv-section {
+        margin-bottom: 20px;
+      }
+
+      /* Section Headers */
+      .section-header {
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+      }
+
+      .section-header__title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #000000;
+      }
+
+      /* Typography */
+      .cv-text {
+        font-size: 12px;
+        color: #000000;
+        line-height: 1.5;
+        margin-bottom: 8px;
+      }
+
+      .cv-text--small {
+        font-size: 11px;
+        color: #666666;
+        margin-bottom: 3px;
+      }
+
+      /* Item Titles - Consolidated */
+      .experience-item {
+        margin-bottom: 15px;
+      }
+
+      .experience-item__title,
+      .project-item__title,
+      .education-item__title {
+        font-size: 14px;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 5px;
+      }
+
+      .education-item__title {
+        margin-bottom: 0; /* Override for education items */
+      }
+
+      /* Project Section */
+      .project-item {
+        margin-bottom: 15px;
+        padding-left: 15px;
+        border-left: 3px solid #333333;
+      }
+
+      .project-links {
+        margin-top: 5px;
+      }
+
+      /* Education Layout */
+      .education-layout {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .education-details {
+        text-align: right;
+      }
+
+      .education-details--flex {
+        text-align: right;
+        flex: 1;
+      }
+
+      /* Skills Section */
+      .skills-category {
+        font-size: 12px;
+        color: #000000;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+
+      .skills-category__label {
+        font-weight: bold;
+      }
+
+      .skills-category__items {
+        font-weight: normal;
+      }
+
+      /* Portfolio Links */
+      .portfolio-links {
+        margin-bottom: 8px;
+      }
+
+      /* Font Awesome Icons */
+      .fas, .fab, .far {
+        margin-right: 8px;
+        width: 16px;
+        text-align: center;
+      }
+
+      /* Clear floats */
+      .cv-layout:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Emoji support */
+      .contact-item__text, .cv-text--small {
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Print styles */
+      @media print {
+        @page {
+          size: A4;
+          margin: 15mm;
+        }
+        
+        body {
+          font-size: 11px;
+          margin: 0;
+          padding: 0;
+        }
+        
+        .cv-container {
+          width: 100%;
+          height: auto;
+          padding: 0;
+          margin: 0;
+        }
+        
+        .cv-wrapper {
+          border: none;
+          padding: 0;
+        }
+        
+        .cv-header__name {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cv-container">
+      <div class="cv-wrapper">
+        <div class="cv-content">
+          <header class="cv-header">
+            <div class="cv-header__title">
+              <div class="cv-header__name">{{personal_info.name}}</div>
+              <p class="cv-header__position">
+                <span class="text--normal">{{personal_info.position}}</span>
+              </p>
+            </div>
+            <div class="cv-header__contact">
+              {{#if personal_info.location}}
+              <div class="contact-item">
+                <div class="contact-item__text"><i class="fas fa-map-marker-alt"></i> {{personal_info.location}}</div>
+              </div>
+              {{/if}}
+              
+              {{#if personal_info.email}}
+              <div class="contact-item">
+                <div class="contact-item__text"><i class="far fa-envelope"></i> {{personal_info.email}}</div>
+              </div>
+              {{/if}}
+              
+              {{#if personal_info.phone}}
+              <div class="contact-item">
+                <div class="contact-item__text"><i class="fas fa-phone"></i> {{personal_info.phone}}</div>
+              </div>
+              {{/if}}
+            </div>
+          </header>
+          
+          <div class="cv-layout">
+            <div class="cv-main">
+              <!-- Summary -->
+              {{#if summary.professional_summary}}
+              <div class="cv-section">
+                <div class="section-header"><div class="section-header__title">Summary</div></div>
+                <p class="cv-text">{{summary.professional_summary}}</p>
+              </div>
+              {{/if}}
+
+              <!-- Experience -->
+              {{#if experience}}
+              <div class="cv-section">
+                <div class="section-header"><div class="section-header__title">Experience</div></div>
+                {{#each experience}}
+                <div class="cv-section">
+                  <div class="experience-item">
+                    <p class="experience-item__title">
+                      <span class="text--bold">{{position}}</span>
+                      <span class="text--normal"> at </span>
+                      <span class="text--bold">{{company}}</span>
+                    </p>
+                    <div class="cv-layout">
+                      {{#if location}}
+                      <div class="cv-text--small">{{location}} | Full-time</div>
+                      {{/if}}
+                      <p class="cv-text--small">{{start_date}} - {{end_date}}</p>
+                    </div>
+                  </div>
+                  {{#if description}}
+                  <p class="cv-text">{{description}}</p>
+                  {{/if}}
+                  {{#if achievements}}
+                  <p class="cv-text">
+                    {{#each achievements}}
+                    • {{this}}{{#unless @last}}<br />{{/unless}}
+                    {{/each}}
+                  </p>
+                  {{/if}}
+                </div>
+                {{/each}}
+              </div>
+              {{/if}}
+
+              <!-- Projects -->
+              {{#if projects}}
+              <div class="cv-section">
+                <div class="section-header"><div class="section-header__title">Projects</div></div>
+                {{#each projects}}
+                <div class="project-item">
+                  <div class="project-item__title">{{name}}</div>
+                  <div class="cv-text">{{description}}</div>
+                  {{#if technologies}}
+                  <div class="cv-text--small">Technologies: {{join technologies}}</div>
+                  {{/if}}
+                  <div class="project-links">
+                    {{#if github_url}}
+                    <div class="cv-text--small"><i class="fab fa-github"></i> {{github_url}}</div>
+                    {{/if}}
+                    {{#if live_url}}
+                    <div class="cv-text--small"><i class="fas fa-globe"></i> {{live_url}}</div>
+                    {{/if}}
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+              {{/if}}
+
+              <!-- Education -->
+              {{#if education}}
+              <div class="cv-section">
+                <div class="section-header"><div class="section-header__title">Education</div></div>
+                {{#each education}}
+                <div class="experience-item">
+                  <div class="education-layout">
+                    <div class="education-item__title">{{institution}}</div>
+                    <div class="education-details--flex">
+                      <div class="cv-text--small">{{degree}} in {{field_of_study}}</div>
+                      <p class="cv-text--small">{{graduation_date}}</p>
+                    </div>
+                  </div>
+                  {{#if gpa}}
+                  <div class="cv-text--small">GPA: {{gpa}}</div>
+                  {{/if}}
+                </div>
+                {{/each}}
+              </div>
+              {{/if}}
+
+              <!-- Certifications -->
+              {{#if certifications}}
+              <div class="cv-section">
+                <div class="section-header"><div class="section-header__title">Certifications</div></div>
+                {{#each certifications}}
+                <div class="experience-item">
+                  <div class="education-layout">
+                    <div class="project-item__title">{{name}}</div>
+                    <div class="education-details">
+                      <div class="cv-text--small">{{issuer}}</div>
+                      <div class="cv-text--small">{{date}}</div>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+              {{/if}}
+            </div>
+
+            <div class="cv-sidebar">
+              <!-- Skills -->
+              {{#if skills}}
+              <div class="cv-section">
+                <div class="section-header"><div class="section-header__title">Skills</div></div>
+                <div class="cv-section">
+                  {{#if skills.programming_languages}}
+                  <p class="skills-category">
+                    <span class="skills-category__label">Programming Languages:</span><br />
+                    <span class="skills-category__items">{{join skills.programming_languages}}</span>
+                  </p>
+                  {{/if}}
+                  
+                  {{#if skills.frameworks}}
+                  <p class="skills-category">
+                    <span class="skills-category__label">Frameworks:</span><br />
+                    <span class="skills-category__items">{{join skills.frameworks}}</span>
+                  </p>
+                  {{/if}}
+                  
+                  {{#if skills.databases}}
+                  <p class="skills-category">
+                    <span class="skills-category__label">Databases:</span><br />
+                    <span class="skills-category__items">{{join skills.databases}}</span>
+                  </p>
+                  {{/if}}
+                  
+                  {{#if skills.cloud_platforms}}
+                  <p class="skills-category">
+                    <span class="skills-category__label">Cloud & DevOps:</span><br />
+                    <span class="skills-category__items">{{join skills.cloud_platforms}}</span>
+                  </p>
+                  {{/if}}
+                  
+                  {{#if skills.tools}}
+                  <p class="skills-category">
+                    <span class="skills-category__label">Tools:</span><br />
+                    <span class="skills-category__items">{{join skills.tools}}</span>
+                  </p>
+                  {{/if}}
+                  
+                  {{#if skills.soft_skills}}
+                  <p class="skills-category">
+                    <span class="skills-category__label">Soft Skills:</span><br />
+                    <span class="skills-category__items">{{join skills.soft_skills}}</span>
+                  </p>
+                  {{/if}}
+                </div>
+              </div>
+              {{/if}}
+
+              <!-- Portfolio -->
+              <div class="cv-section">
+                <div class="section-header"><div class="section-header__title">Portfolio</div></div>
+                {{#if personal_info.linkedin}}
+                <div class="contact-item">
+                  <div class="contact-item__text">💼 {{personal_info.linkedin}}</div>
+                </div>
+                {{/if}}
+                
+                {{#if personal_info.github}}
+                <div class="contact-item">
+                  <div class="contact-item__text">🐙 {{personal_info.github}}</div>
+                </div>
+                {{/if}}
+                
+                {{#if personal_info.portfolio}}
+                <div class="portfolio-links">
+                  <div class="contact-item__text"><i class="fas fa-globe"></i> {{personal_info.portfolio}}</div>
+                </div>
+                {{/if}}
+              </div>
+
+              <!-- Languages -->
+              {{#if languages}}
+              <div class="cv-section">
+                <div class="section-header"><div class="section-header__title">Languages</div></div>
+                {{#each languages}}
+                <div class="cv-text--small">{{language}} - {{proficiency}}</div>
+                {{/each}}
+              </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> 
