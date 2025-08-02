@@ -1,23 +1,33 @@
-# JobPare CV Generator
+# Jobpare CV Generator
 
 A local-first tool to generate beautiful, professional CVs from JSON data and HTML templates. Perfect for developers, designers, and professionals who want full control over their CV presentation.
 
-🌐 **Live Web Editor**: [https://jobpare.github.io/cvgen/](https://jobpare.github.io/cvgen/)
-
-## ✨ Features
-
-- 📄 **Prebuilt HTML templates** - Clean, professional designs using Handlebars
 - 🧠 **JSON-based data input** - Easy to edit and version control
-- 🎯 **Role-specific guidance** - Skills, verbs, and schema for different roles
 - 🖨️ **PDF output** - High-quality, print-ready CVs using Puppeteer
 - 🔧 **Local-first** - No cloud dependencies, your data stays private
-- 🎨 **Web-based editor** - Visual editor with live preview
+- 🎨 **Web-based editor** - Visual editor with live preview ([CV-JSON Web Editor](https://jobpare.github.io/cvgen/))
 - 📱 **CLI tool** - Command-line interface for automation
-- 🎯 **Job-role-specific guidance** - Skills, verbs, and schema for different roles
+- 🎯 **Role-specific guidance** - Skills, verbs, and schema for different roles
+
+## 📋 Requirements
+
+Before you begin, ensure you have the following installed:
+
+- **Node.js 18+** - JavaScript runtime for the CLI tool
+- **Chrome/Chromium** - For PDF generation (optional, falls back to HTML)
+- **Modern web browser** - For the web-based editor
+
+### Dependencies
+- [Handlebars](https://handlebarsjs.com/) for templating
+- [Puppeteer](https://pptr.dev/) for PDF generation
+- [Commander.js](https://github.com/tj/commander.js) for CLI interface
+
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
+Follow these steps to create your professional CV:
+
+### 1. Installation
 
 ```bash
 # Install Node.js dependencies
@@ -27,65 +37,83 @@ npm install
 chmod +x src/generate.js
 ```
 
-### 2. Choose Your Role
+### 2. Edit CV JSON
 
-Browse the `docs/cv-data/` directory to find your role:
-- `backend/` - Backend developers
-- `frontend/` - Frontend developers
+#### 2.1. Open JSON Web Editor to customize your information
 
-### 3. Create Your CV Data
+1. Visit [https://jobpare.github.io/cvgen/](https://jobpare.github.io/cvgen/) (online editor)
+2. Choose your role from the dropdown (backend/frontend)
+3. Edit your CV data using the form editor or JSON view
+4. See live preview of your CV as you type
 
-Use the `cv-schema.json` file in your role directory as a guide to create your CV data:
+![CV JSON Editor](docs/img/js_cv_json_editor.png)
+
+#### 2.2. Save JSON
+- Click "Download JSON" to save your CV data as a JSON file
+- Save it as `my-cv.json` in your project directory
+
+### 3. Pick Template + Format
+
+**Available Templates:**
+- `template-1-handlebars.html` - Clean, professional single-column layout
+
+**Output Formats:**
+- **HTML** - Web-friendly, can be opened in any browser
+- **PDF** - Print-ready, professional format (requires Chrome/Chromium)
+
+### 4. Run CLI Commands to generate your CV
 
 ```bash
-# Copy the sample data for your role
-cp docs/cv-data/backend/cv-schema.json my-cv.json
-
-# Edit with your information
-nano my-cv.json
-```
-
-### 4. Generate Your CV
-
-#### Using the CLI Tool
-
-```bash
-# Generate HTML file
+# Generate HTML file (recommended for most users)
 node src/generate.js generate \
-  --template docs/cv-templates/template-1-handlebars.html \
-  --input my-cv.json \
-  --output output/my-cv.html
+  -t docs/cv-templates/template-1-handlebars.html \
+  -i my-cv.json \
+  -o output/my-cv.html
 
 # Generate PDF file
 node src/generate.js generate \
-  --template docs/cv-templates/template-1-handlebars.html \
-  --input my-cv.json \
-  --output output/my-cv.pdf
+  -t docs/cv-templates/template-1-handlebars.html \
+  -i my-cv.json \
+  -o output/my-cv.pdf
 
-# Validate data without generating output
+# Validate your data before generating
 node src/generate.js generate \
-  --template docs/cv-templates/template-1-handlebars.html \
-  --input my-cv.json \
+  -t docs/cv-templates/template-1-handlebars.html \
+  -i my-cv.json \
   --validate-only
 ```
 
-#### Using the Web Editor
+Your generated CV will be saved in the `output/` directory!
 
-**Option 1: Use the Live Editor (Recommended)**
-1. Visit [https://jobpare.github.io/cvgen/](https://jobpare.github.io/cvgen/)
-2. Choose your role from the dropdown
-3. Edit your CV data using the form editor or JSON view
-4. See live preview of your CV
-5. Download your JSON data when ready
-6. Use the CLI tool to generate the final CV
+## 🏗️ Architecture
 
-**Option 2: Local Development**
-1. Open `docs/index.html` in your browser
-2. Choose your role from the dropdown
-3. Edit your CV data using the form editor or JSON view
-4. See live preview of your CV
-5. Download your JSON data when ready
-6. Use the CLI tool to generate the final CV
+Jobpare CV Generator uses a **modern web-based approach** combining HTML/CSS/JavaScript for the editor and Node.js for document generation. This provides a simpler alternative to traditional LaTeX-based CV solutions.
+
+### Key Components
+- **Web Editor**: Online editor at jobpare.github.io/cvgen/ with instant live preview
+- **JSON Data**: Version control friendly, platform-independent format
+- **Templates**: Handlebars.js for flexible, logic-less templating
+- **Generation**: HTML output + PDF conversion via Puppeteer
+- **Curated Content**: Skills and action verbs lists compiled from most-used terms across the web
+
+### Comparison with LaTeX Solutions
+
+| Feature | Jobpare CV Generator | Traditional LaTeX |
+|---------|---------------------|-------------------|
+| **Setup** | Simple npm install | Complex LaTeX distribution |
+| **Learning** | Basic HTML/CSS | LaTeX syntax required |
+| **Preview** | Instant browser preview | Compile → View cycle |
+| **Customization** | Visual editor + CSS | Code-based editing |
+| **Version Control** | Human-readable JSON | Mixed text/binary files |
+| **Cross-Platform** | Works everywhere | Platform-specific issues |
+| **Dependencies** | Node.js + Chrome | Full LaTeX distribution |
+| **Output Quality** | Professional print-ready | Excellent typography |
+
+### Why This Approach?
+- **Simple**: No complex toolchain, familiar web technologies
+- **Flexible**: Easy to customize templates and add new roles
+- **Maintainable**: Web standards ensure long-term compatibility
+- **Fast**: Instant preview, efficient generation
 
 ## 📁 Project Structure
 
@@ -93,8 +121,8 @@ node src/generate.js generate \
 jobpare-cv/
 ├── src/
 │   └── generate.js                   # 🧠 CLI generator
-├── docs/                             # 🌐 Web interface
-│   ├── index.html                    # 📄 Web editor
+├── docs/                             # 🌐 Web interface source
+│   ├── index.html                    # 📄 Web editor (deployed to GitHub Pages)
 │   ├── js/
 │   │   └── editor.js                 # 🔧 Editor logic
 │   ├── css/
@@ -129,12 +157,13 @@ jobpare-cv/
 
 ## 📝 CV Data Format
 
-Your CV data should follow this JSON structure:
+Your CV data should follow this complete JSON structure:
 
 ```json
 {
   "personal_info": {
     "name": "Your Name",
+    "position": "Your Target Position",
     "email": "your.email@example.com",
     "phone": "+1 (555) 123-4567",
     "location": "City, State",
@@ -143,7 +172,7 @@ Your CV data should follow this JSON structure:
     "portfolio": "yourportfolio.com"
   },
   "summary": {
-    "professional_summary": "2-3 sentences about your background and goals"
+    "professional_summary": "2-3 sentences about your background, expertise, and career goals"
   },
   "experience": [
     {
@@ -152,14 +181,23 @@ Your CV data should follow this JSON structure:
       "location": "City, State",
       "start_date": "MM/YYYY",
       "end_date": "MM/YYYY or 'Present'",
-      "description": "Brief company description",
+      "description": "Brief company description and your role",
       "achievements": [
         "Use action verbs from action-verbs.txt",
-        "Quantify your impact when possible"
+        "Quantify your impact when possible",
+        "Focus on results and outcomes"
       ]
     }
   ],
-  "education": [...],
+  "education": [
+    {
+      "institution": "University Name",
+      "degree": "Degree Type",
+      "field_of_study": "Field of Study",
+      "graduation_date": "MM/YYYY",
+      "gpa": "GPA (optional)"
+    }
+  ],
   "skills": {
     "programming_languages": ["From skills.txt"],
     "frameworks": ["From skills.txt"],
@@ -168,9 +206,29 @@ Your CV data should follow this JSON structure:
     "tools": ["From skills.txt"],
     "soft_skills": ["Your soft skills"]
   },
-  "projects": [...],
-  "certifications": [...],
-  "languages": [...]
+  "projects": [
+    {
+      "name": "Project Name",
+      "description": "Brief project description and your role",
+      "technologies": ["Tech stack used"],
+      "github_url": "github.com/yourusername/project",
+      "live_url": "project-demo.com (optional)"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Certification Name",
+      "issuer": "Issuing Organization",
+      "date": "MM/YYYY",
+      "expiry_date": "MM/YYYY or null"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Language Name",
+      "proficiency": "Native/Fluent/Intermediate/Basic"
+    }
+  ]
 }
 ```
 
@@ -178,6 +236,7 @@ Your CV data should follow this JSON structure:
 
 ### Template 1 (Default)
 - **File**: `docs/cv-templates/template-1-handlebars.html`
+- **Figma Design**: [View Template 1 Design](https://www.figma.com/community/file/1532035417339090995/jobpare-product-designer-cv-template)
 - **Style**: Clean, professional, single-column layout
 - **Features**: 
   - Responsive design
@@ -215,111 +274,9 @@ node src/generate.js generate --help
 | `--html-only` | Generate HTML file only (skip PDF generation) |
 | `--validate-only` | Only validate JSON data |
 
-## 🌐 Web Editor
-
-The web-based editor provides a user-friendly interface for creating and editing CV data:
-
-### Features
-- **Visual Form Editor**: Edit CV data using forms instead of raw JSON
-- **JSON Editor**: Direct JSON editing with syntax highlighting
-- **Live Preview**: See your CV as you type
-- **Role Selection**: Choose from available roles (backend, frontend)
-- **Validation**: Real-time validation of your data
-- **Export**: Download your JSON data for use with the CLI tool
-
-### Usage
-
-**Live Editor (Recommended)**
-1. Visit [https://jobpare.github.io/cvgen/](https://jobpare.github.io/cvgen/)
-2. Select your role from the dropdown
-3. Use the form editor or JSON view to edit your data
-4. See live preview updates
-5. Validate your data
-6. Download the JSON file
-7. Use the CLI tool to generate the final CV
-
-**Local Development**
-1. Open `docs/index.html` in your web browser
-2. Select your role from the dropdown
-3. Use the form editor or JSON view to edit your data
-4. See live preview updates
-5. Validate your data
-6. Download the JSON file
-7. Use the CLI tool to generate the final CV
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-### Adding New Roles
-
-1. Create a new directory in `docs/cv-data/` (e.g., `docs/cv-data/data-scientist/`)
-2. Add three files:
-   - `cv-schema.json` - Data structure for the role
-   - `skills.txt` - Relevant skills (20-30 items)
-   - `action-verbs.txt` - Action verbs (30+ items)
-3. Update the role selector in `docs/index.html`
-
-### Creating New Templates
-
-1. Create a new HTML file in `docs/cv-templates/` (e.g., `template-2-handlebars.html`)
-2. Use Handlebars templating syntax
-3. Follow the existing template structure
-4. Test with sample data
-
-### Template Guidelines
-
-- Use semantic HTML
-- Include print-friendly CSS
-- Make it responsive
-- Use consistent naming conventions
-- Test with various data lengths
-- Use Handlebars syntax: `{{variable}}`, `{{#each array}}...{{/each}}`
-
-### Pull Request Process
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request with clear description
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**PDF generation fails:**
-- The tool will automatically fall back to HTML generation
-- Open the HTML file in your browser and use "Print to PDF" for a PDF version
-- Ensure Chrome/Chromium is installed and accessible
-- Check that the executable path in `generate.js` matches your Chrome installation
-
-**Template rendering errors:**
-- Check JSON syntax
-- Ensure all required fields are present
-- Validate against the schema
-- Check Handlebars syntax in templates
-
-**Web editor not working:**
-- Ensure you're opening `docs/index.html` in a modern browser
-- Check browser console for JavaScript errors
-- Verify all files in the `docs/` directory are present
-
-**CLI tool issues:**
-- Ensure Node.js 18+ is installed
-- Run `npm install` to install dependencies
-- Make sure the script is executable: `chmod +x src/generate.js`
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [Handlebars](https://handlebarsjs.com/) for templating
-- [Puppeteer](https://pptr.dev/) for PDF generation
-- [Commander.js](https://github.com/tj/commander.js) for CLI interface
-- The open-source community for inspiration and tools
 
 ---
 
