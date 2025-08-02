@@ -2,6 +2,8 @@
 
 A local-first tool to generate beautiful, professional CVs from JSON data and HTML templates. Perfect for developers, designers, and professionals who want full control over their CV presentation.
 
+🌐 **Live Web Editor**: [https://jobpare.github.io/cvgen/](https://jobpare.github.io/cvgen/)
+
 ## ✨ Features
 
 - 📄 **Prebuilt HTML templates** - Clean, professional designs using Handlebars
@@ -69,6 +71,15 @@ node src/generate.js generate \
 
 #### Using the Web Editor
 
+**Option 1: Use the Live Editor (Recommended)**
+1. Visit [https://jobpare.github.io/cvgen/](https://jobpare.github.io/cvgen/)
+2. Choose your role from the dropdown
+3. Edit your CV data using the form editor or JSON view
+4. See live preview of your CV
+5. Download your JSON data when ready
+6. Use the CLI tool to generate the final CV
+
+**Option 2: Local Development**
 1. Open `docs/index.html` in your browser
 2. Choose your role from the dropdown
 3. Edit your CV data using the form editor or JSON view
@@ -217,6 +228,17 @@ The web-based editor provides a user-friendly interface for creating and editing
 - **Export**: Download your JSON data for use with the CLI tool
 
 ### Usage
+
+**Live Editor (Recommended)**
+1. Visit [https://jobpare.github.io/cvgen/](https://jobpare.github.io/cvgen/)
+2. Select your role from the dropdown
+3. Use the form editor or JSON view to edit your data
+4. See live preview updates
+5. Validate your data
+6. Download the JSON file
+7. Use the CLI tool to generate the final CV
+
+**Local Development**
 1. Open `docs/index.html` in your web browser
 2. Select your role from the dropdown
 3. Use the form editor or JSON view to edit your data
