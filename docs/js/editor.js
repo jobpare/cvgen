@@ -83,7 +83,7 @@ class CVEditor {
             // Load template (only once, cache it)
             if (!this.template) {
                 console.log('Fetching template...');
-                const templateResponse = await fetch('./cv-templates/template-1-handlebars.html');
+                const templateResponse = await fetch('./cv-templates/template-1.html');
                 if (!templateResponse.ok) {
                     throw new Error(`Failed to load template: ${templateResponse.status}`);
                 }

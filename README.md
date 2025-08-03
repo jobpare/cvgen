@@ -1,5 +1,11 @@
 # Jobpare CV Generator
 
+<p align="center">
+  <img src="docs/img/cvgen_logo.png" alt="Jobpare CV Generator" width="200" />
+</p>
+
+[![Open Source Helpers](https://www.codetriage.com/jobpare/cvgen/badges/users.svg)](https://www.codetriage.com/jobpare/cvgen)
+
 A local-first tool to generate beautiful, professional CVs from JSON data and HTML templates. Perfect for developers, designers, and professionals who want full control over their CV presentation.
 
 - 🧠 **JSON-based data input** - Easy to edit and version control
@@ -55,7 +61,7 @@ chmod +x src/generate.js
 ### 3. Pick Template + Format
 
 **Available Templates:**
-- `template-1-handlebars.html` - Clean, professional single-column layout
+- `template-1.html` - Clean, professional single-column layout
 
 **Output Formats:**
 - **HTML** - Web-friendly, can be opened in any browser
@@ -66,19 +72,19 @@ chmod +x src/generate.js
 ```bash
 # Generate HTML file (recommended for most users)
 node src/generate.js generate \
-  -t docs/cv-templates/template-1-handlebars.html \
+  -t docs/cv-templates/template-1.html \
   -i my-cv.json \
   -o output/my-cv.html
 
 # Generate PDF file
 node src/generate.js generate \
-  -t docs/cv-templates/template-1-handlebars.html \
+  -t docs/cv-templates/template-1.html \
   -i my-cv.json \
   -o output/my-cv.pdf
 
 # Validate your data before generating
 node src/generate.js generate \
-  -t docs/cv-templates/template-1-handlebars.html \
+  -t docs/cv-templates/template-1.html \
   -i my-cv.json \
   --validate-only
 ```
@@ -128,7 +134,7 @@ jobpare-cv/
 │   ├── css/
 │   │   └── editor.css                # 🎨 Editor styles
 │   ├── cv-templates/
-│   │   └── template-1-handlebars.html # 📄 HTML template
+│   │   └── template-1.html # 📄 HTML template
 │   └── cv-data/                      # 🎯 Role-specific guidance
 │       ├── backend/
 │       │   ├── cv-schema.json       # 👤 Data structure guide
@@ -235,7 +241,7 @@ Your CV data should follow this complete JSON structure:
 ## 🎨 Templates
 
 ### Template 1 (Default)
-- **File**: `docs/cv-templates/template-1-handlebars.html`
+- **File**: `docs/cv-templates/template-1.html`
 - **Figma Design**: [View Template 1 Design](https://www.figma.com/community/file/1532035417339090995/jobpare-product-designer-cv-template)
 - **Style**: Clean, professional, single-column layout
 - **Features**: 
@@ -249,16 +255,16 @@ Your CV data should follow this complete JSON structure:
 
 ```bash
 # Generate HTML file (recommended for most users)
-node src/generate.js generate -t docs/cv-templates/template-1-handlebars.html -i my-cv.json -o output/cv.html
+node src/generate.js generate -t docs/cv-templates/template-1.html -i my-cv.json -o output/cv.html
 
 # Generate PDF file (requires Chrome/Chromium)
-node src/generate.js generate -t docs/cv-templates/template-1-handlebars.html -i my-cv.json -o output/cv.pdf
+node src/generate.js generate -t docs/cv-templates/template-1.html -i my-cv.json -o output/cv.pdf
 
 # Force HTML output even with .pdf extension
-node src/generate.js generate -t docs/cv-templates/template-1-handlebars.html -i my-cv.json -o output/cv.pdf --html-only
+node src/generate.js generate -t docs/cv-templates/template-1.html -i my-cv.json -o output/cv.pdf --html-only
 
 # Validate data without generating output
-node src/generate.js generate -t docs/cv-templates/template-1-handlebars.html -i my-cv.json --validate-only
+node src/generate.js generate -t docs/cv-templates/template-1.html -i my-cv.json --validate-only
 
 # Help
 node src/generate.js generate --help

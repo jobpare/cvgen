@@ -3,18 +3,14 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
       /* CSS Values (compatible with all PDF generators) */
 
-      /* Font Face Declarations - Consolidated */
-      @font-face {
-        font-family: 'Inter';
-        src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2') format('woff2');
-        font-weight: 400 700;
-        font-style: normal;
-        font-display: swap;
-      }
+
       
       /* Reset and Base Styles */
       * {
@@ -34,13 +30,13 @@
       }
 
       /* Utility Classes */
-      .text--bold { font-weight: bold; }
-      .text--normal { font-weight: normal; }
+      .text--bold { font-weight: 700; }
+      .text--normal { font-weight: 400; }
       .text--small { font-size: 11px; color: #666666; }
-      .text--title { font-size: 14px; font-weight: bold; color: #000000; margin-bottom: 5px; }
-      .text--header { font-size: 18px; font-weight: bold; color: #000000; }
-      .text--name { font-size: 28px; font-weight: bold; color: #000000; margin-bottom: 5px; }
-      .text--position { font-size: 16px; color: #666666; font-weight: normal; }
+      .text--title { font-size: 14px; font-weight: 700; color: #000000; margin-bottom: 5px; }
+      .text--header { font-size: 18px; font-weight: 700; color: #000000; }
+      .text--name { font-size: 28px; font-weight: 700; color: #000000; margin-bottom: 5px; }
+      .text--position { font-size: 16px; color: #666666; font-weight: 400; }
       
       .layout--flex { display: flex; justify-content: space-between; align-items: flex-start; }
       .layout--flex-center { display: flex; justify-content: space-between; align-items: center; }
@@ -77,8 +73,6 @@
         justify-content: space-between;
         align-items: flex-start;
         margin-bottom: 30px;
-        padding-bottom: 15px;
-        border-bottom: 2px solid #333333;
       }
 
       .cv-header__title {
@@ -87,7 +81,7 @@
 
       .cv-header__name {
         font-size: 28px;
-        font-weight: bold;
+        font-weight: 700;
         color: #000000;
         margin-bottom: 5px;
       }
@@ -95,11 +89,10 @@
       .cv-header__position {
         font-size: 16px;
         color: #666666;
-        font-weight: normal;
+        font-weight: 400;
       }
 
       .cv-header__contact {
-        text-align: right;
         min-width: 200px;
       }
 
@@ -147,7 +140,7 @@
 
       .section-header__title {
         font-size: 18px;
-        font-weight: bold;
+        font-weight: 700;
         color: #000000;
       }
 
@@ -164,6 +157,11 @@
         color: #666666;
         margin-bottom: 3px;
       }
+      
+      /* Push date to true right edge */
+      .cv-layout .cv-text--small:last-child {
+        margin-left: auto;
+      }
 
       /* Item Titles - Consolidated */
       .experience-item {
@@ -174,7 +172,7 @@
       .project-item__title,
       .education-item__title {
         font-size: 14px;
-        font-weight: bold;
+        font-weight: 700;
         color: #000000;
         margin-bottom: 5px;
       }
@@ -187,7 +185,7 @@
       .project-item {
         margin-bottom: 15px;
         padding-left: 15px;
-        border-left: 3px solid #333333;
+        border-left: 3px solid #a9a9a9;
       }
 
       .project-links {
@@ -220,11 +218,11 @@
       }
 
       .skills-category__label {
-        font-weight: bold;
+        font-weight: 700;
       }
 
       .skills-category__items {
-        font-weight: normal;
+        font-weight: 400;
       }
 
       /* Portfolio Links */
@@ -232,11 +230,21 @@
         margin-bottom: 8px;
       }
 
-      /* Font Awesome Icons */
-      .fas, .fab, .far {
-        margin-right: 8px;
+      /* Lucide Icons */
+      .icon {
         width: 16px;
-        text-align: center;
+        height: 16px;
+        margin-right: 8px;
+        display: inline-block;
+        vertical-align: middle;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        fill: none;
+      }
+      
+      .icon--small {
+        width: 14px;
+        height: 14px;
       }
 
       /* Clear floats */
@@ -296,19 +304,25 @@
             <div class="cv-header__contact">
               {{#if personal_info.location}}
               <div class="contact-item">
-                <div class="contact-item__text"><i class="fas fa-map-marker-alt"></i> {{personal_info.location}}</div>
+                <div class="contact-item__text">
+                  <i data-lucide="map-pin" class="icon"></i> {{personal_info.location}}
+                </div>
               </div>
               {{/if}}
               
               {{#if personal_info.email}}
               <div class="contact-item">
-                <div class="contact-item__text"><i class="far fa-envelope"></i> {{personal_info.email}}</div>
+                <div class="contact-item__text">
+                  <i data-lucide="mail" class="icon"></i> {{personal_info.email}}
+                </div>
               </div>
               {{/if}}
               
               {{#if personal_info.phone}}
               <div class="contact-item">
-                <div class="contact-item__text"><i class="fas fa-phone"></i> {{personal_info.phone}}</div>
+                <div class="contact-item__text">
+                  <i data-lucide="phone" class="icon"></i> {{personal_info.phone}}
+                </div>
               </div>
               {{/if}}
             </div>
@@ -371,10 +385,14 @@
                   {{/if}}
                   <div class="project-links">
                     {{#if github_url}}
-                    <div class="cv-text--small"><i class="fab fa-github"></i> {{github_url}}</div>
+                    <div class="cv-text--small">
+                      <i data-lucide="github" class="icon icon--small"></i> {{github_url}}
+                    </div>
                     {{/if}}
                     {{#if live_url}}
-                    <div class="cv-text--small"><i class="fas fa-globe"></i> {{live_url}}</div>
+                    <div class="cv-text--small">
+                      <i data-lucide="globe" class="icon icon--small"></i> {{live_url}}
+                    </div>
                     {{/if}}
                   </div>
                 </div>
@@ -478,19 +496,25 @@
                 <div class="section-header"><div class="section-header__title">Portfolio</div></div>
                 {{#if personal_info.linkedin}}
                 <div class="contact-item">
-                  <div class="contact-item__text">💼 {{personal_info.linkedin}}</div>
+                  <div class="contact-item__text">
+                    <i data-lucide="linkedin" class="icon"></i> {{personal_info.linkedin}}
+                  </div>
                 </div>
                 {{/if}}
                 
                 {{#if personal_info.github}}
                 <div class="contact-item">
-                  <div class="contact-item__text">🐙 {{personal_info.github}}</div>
+                  <div class="contact-item__text">
+                    <i data-lucide="github" class="icon"></i> {{personal_info.github}}
+                  </div>
                 </div>
                 {{/if}}
                 
                 {{#if personal_info.portfolio}}
                 <div class="portfolio-links">
-                  <div class="contact-item__text"><i class="fas fa-globe"></i> {{personal_info.portfolio}}</div>
+                  <div class="contact-item__text">
+                    <i data-lucide="globe" class="icon"></i> {{personal_info.portfolio}}
+                  </div>
                 </div>
                 {{/if}}
               </div>
@@ -509,5 +533,12 @@
         </div>
       </div>
     </div>
+    
+    <script>
+      // Initialize Lucide icons
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    </script>
   </body>
 </html> 
