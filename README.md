@@ -5,6 +5,12 @@
 </p>
 
 [![Open Source Helpers](https://www.codetriage.com/jobpare/cvgen/badges/users.svg)](https://www.codetriage.com/jobpare/cvgen)
+![GitHub stars](https://img.shields.io/github/stars/jobpare/cvgen?style=social)
+![GitHub forks](https://img.shields.io/github/forks/jobpare/cvgen?style=social)
+![GitHub license](https://img.shields.io/github/license/jobpare/cvgen)
+![Made with Node.js](https://img.shields.io/badge/Made%20with-Node.js-blue)
+![CLI Tool](https://img.shields.io/badge/CLI-Tool-informational)
+
 
 A local-first tool to generate beautiful, professional CVs from JSON data and HTML templates. Perfect for developers, designers, and professionals who want full control over their CV presentation.
 
@@ -104,22 +110,18 @@ Jobpare CV Generator uses a **modern web-based approach** combining HTML/CSS/Jav
 
 ### Comparison with LaTeX Solutions
 
-| Feature | Jobpare CV Generator | Traditional LaTeX |
-|---------|---------------------|-------------------|
-| **Setup** | Simple npm install | Complex LaTeX distribution |
-| **Learning** | Basic HTML/CSS | LaTeX syntax required |
-| **Preview** | Instant browser preview | Compile → View cycle |
-| **Customization** | Visual editor + CSS | Code-based editing |
-| **Version Control** | Human-readable JSON | Mixed text/binary files |
-| **Cross-Platform** | Works everywhere | Platform-specific issues |
-| **Dependencies** | Node.js + Chrome | Full LaTeX distribution |
-| **Output Quality** | Professional print-ready | Excellent typography |
+| Feature             | 🛠 **Jobpare CV Generator**           | 📚 **Traditional LaTeX (e.g., Awesome-CV)** |
+| ------------------- | ------------------------------------- | ------------------------------------------- |
+| **Setup**           | Simple `npm install`                  | Complex LaTeX distribution setup            |
+| **Learning Curve**  | Basic HTML/CSS or JSON                | Steep; requires LaTeX syntax                |
+| **Live Preview**    | Instant browser preview               | Compile → View cycle                        |
+| **Customization**   | Visual editor or tweakable CSS        | Manual code editing                         |
+| **Version Control** | Clean JSON + template files           | Mixed text + binary artifacts               |
+| **Cross-Platform**  | Works on any OS with Node.js + Chrome | OS-specific LaTeX quirks                    |
+| **Dependencies**    | Minimal (Node.js, Puppeteer/Chrome)   | Full LaTeX suite (TeX Live, MikTeX, etc.)   |
+| **Output Quality**  | Clean, professional, print-ready PDF  | Excellent typographic control               |
 
-### Why This Approach?
-- **Simple**: No complex toolchain, familiar web technologies
-- **Flexible**: Easy to customize templates and add new roles
-- **Maintainable**: Web standards ensure long-term compatibility
-- **Fast**: Instant preview, efficient generation
+cvgen delivers most of the output quality of LaTeX with a dramatically simpler setup and developer-friendly workflow.
 
 ## 📁 Project Structure
 
@@ -283,6 +285,11 @@ node src/generate.js generate --help
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## Contribution
+
+See [Contribution.md](./Contribution.md) for the project roadmap and ways to contribute. 
 
 ---
 
