@@ -221,6 +221,13 @@ body {
     color: var(--text-accent);
 }
 
+/* Panel controls for multiple buttons */
+.panel-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
 /* Panel content */
 .panel-content {
     flex: 1;
@@ -369,6 +376,18 @@ textarea.form-control {
     box-shadow: var(--shadow-md);
 }
 
+.btn-warning {
+    background: var(--warning);
+    color: white;
+    font-weight: 500;
+}
+
+.btn-warning:hover {
+    background: #e6930b;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
 /* Validation messages */
 .validation-messages {
     padding: 15px 20px;
@@ -453,4 +472,32 @@ textarea.form-control {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Saving indicator */
+.saving-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--success);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.saving-indicator.show {
+    opacity: 1;
+}
+
+.saving-indicator i {
+    font-size: 14px;
 } 
