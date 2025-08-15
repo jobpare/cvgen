@@ -9,16 +9,79 @@ class CVEditor {
         this.init();
     }
 
+    // localStorage methods
+    saveToStorage(key, data) {
+        try {
+            const storageKey = `cvgen_${key}`;
+            localStorage.setItem(storageKey, JSON.stringify(data));
+            
+            // Show brief saving indicator for cvData
+            if (key === 'cvData') {
+                this.showSavingIndicator();
+            }
+        } catch (error) {
+            console.warn('Failed to save to localStorage:', error);
+        }
+    }
+
+    showSavingIndicator() {
+        // Create or update saving indicator
+        let indicator = document.getElementById('savingIndicator');
+        if (!indicator) {
+            indicator = document.createElement('div');
+            indicator.id = 'savingIndicator';
+            indicator.className = 'saving-indicator';
+            indicator.innerHTML = '<i class="fas fa-save"></i> Saved';
+            document.body.appendChild(indicator);
+        }
+        
+        // Show and hide the indicator
+        indicator.classList.add('show');
+        clearTimeout(this.savingTimeout);
+        this.savingTimeout = setTimeout(() => {
+            indicator.classList.remove('show');
+        }, 1500);
+    }
+
+    loadFromStorage(key) {
+        try {
+            const storageKey = `cvgen_${key}`;
+            const data = localStorage.getItem(storageKey);
+            return data ? JSON.parse(data) : null;
+        } catch (error) {
+            console.warn('Failed to load from localStorage:', error);
+            return null;
+        }
+    }
+
     async init() {
         this.setupEventListeners();
+        
+        // Try to restore saved role from localStorage
+        const savedRole = this.loadFromStorage('currentRole');
+        if (savedRole) {
+            this.currentRole = savedRole;
+            document.getElementById('roleSelect').value = savedRole;
+        }
+        
         await this.loadRole(this.currentRole);
         this.generateForm();
+        
+        // Try to restore saved CV data from localStorage
+        const savedData = this.loadFromStorage('cvData');
+        if (savedData) {
+            this.cvData = { ...this.cvData, ...savedData };
+            this.updateFormFromData();
+        }
+        
         this.updateJSON();
+        this.generatePreview();
     }
 
     setupEventListeners() {
         // Role selector
         document.getElementById('roleSelect').addEventListener('change', (e) => {
+            this.saveToStorage('currentRole', e.target.value);
             this.loadRole(e.target.value);
         });
 
@@ -64,11 +127,9 @@ class CVEditor {
 
     async loadRole(role) {
         this.currentRole = role;
-        console.log('Loading role:', role);
         
         try {
             // Load cv-schema once and use for both schema and data
-            console.log('Fetching CV data...');
             const cvSchemaResponse = await fetch(`./cv-data/${role}/cv-schema.json`);
             if (!cvSchemaResponse.ok) {
                 throw new Error(`Failed to load data: ${cvSchemaResponse.status}`);
@@ -78,17 +139,14 @@ class CVEditor {
             // Set both schema and data from the same response
             this.schema = cvData;
             this.cvData = cvData;
-            console.log('CV data loaded successfully');
             
             // Load template (only once, cache it)
             if (!this.template) {
-                console.log('Fetching template...');
                 const templateResponse = await fetch('./cv-templates/template-1.html');
                 if (!templateResponse.ok) {
                     throw new Error(`Failed to load template: ${templateResponse.status}`);
                 }
                 this.template = await templateResponse.text();
-                console.log('Template loaded successfully');
             }
             
             // Skip validation for now - focus on core functionality
@@ -298,6 +356,10 @@ class CVEditor {
         }
         
         this.setNestedValue(this.cvData, fieldName, value);
+        
+        // Save to localStorage whenever data changes
+        this.saveToStorage('cvData', this.cvData);
+        
         this.updateJSON();
         this.generatePreview();
     }
@@ -311,6 +373,10 @@ class CVEditor {
         try {
             const newData = JSON.parse(jsonText);
             this.cvData = newData;
+            
+            // Save to localStorage whenever JSON is updated
+            this.saveToStorage('cvData', this.cvData);
+            
             this.updateFormFromData();
             this.generatePreview();
         } catch (e) {
@@ -451,6 +517,10 @@ class CVEditor {
             const data = JSON.parse(text);
             
             this.cvData = data;
+            
+            // Save loaded data to localStorage
+            this.saveToStorage('cvData', this.cvData);
+            
             this.updateFormFromData();
             this.updateJSON();
             this.generatePreview();
