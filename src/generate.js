@@ -14,26 +14,41 @@ import Handlebars from 'handlebars';
 import puppeteer from 'puppeteer';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
+import ajvErrors from "ajv-errors";
+import ValidationSchema from './validation/schema.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Initialize JSON schema validator
-const ajv = new Ajv({ allErrors: true });
+const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
+ajvErrors(ajv)
 
 class CVGenerator {
     constructor() {
         this.templates = {};
         this.schemas = {};
+        this.ajvValidate = ajv.compile(ValidationSchema);
     }
 
     /**
-     * Load and validate JSON data from file
+     * Load and validate JSON data from file using Ajv and imported ValidationSchema
      */
     async loadJsonData(filePath) {
         try {
             const data = await fs.readJson(filePath);
+            const valid = this.ajvValidate(data);
+            if (!valid) {
+                console.log(chalk.red('❌ Input data validation failed. See details below:'));
+                this.ajvValidate.errors.forEach((err, idx) => {
+                    const field = err.instancePath ? err.instancePath : '(root)';
+                    const message = err.message;
+                    const expected = err.params && err.params.type ? `Expected type: ${err.params.type}` : '';
+                    console.log(chalk.yellow(`  ${idx + 1}. Field: ${field} - ${message} ${expected}`));
+                });
+                throw new Error('Input data validation failed. See above for details.');
+            }
             return data;
         } catch (error) {
             if (error.code === 'ENOENT') {
@@ -177,7 +192,14 @@ class CVGenerator {
         
         // Load and validate data
         console.log(chalk.blue('📋 Loading JSON data...'));
-        const data = await this.loadJsonData(inputPath);
+        let data;
+        try {
+            data = await this.loadJsonData(inputPath);
+        } catch (error) {
+            // Fail fast on validation error
+            console.log(chalk.red('❌ CV generation aborted due to input validation errors.'));
+            process.exit(1);
+        }
         this.validateData(data);
         
         if (validateOnly) {
@@ -275,4 +297,4 @@ program
         }
     });
 
-program.parse(); 
+program.parse();
