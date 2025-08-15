@@ -221,6 +221,13 @@ body {
     color: var(--text-accent);
 }
 
+/* Panel controls for multiple buttons */
+.panel-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
 /* Panel content */
 .panel-content {
     flex: 1;

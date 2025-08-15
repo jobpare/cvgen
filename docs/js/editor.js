@@ -90,6 +90,11 @@ class CVEditor {
             this.toggleView();
         });
 
+        // View toggle from JSON panel
+        document.getElementById('toggleViewFromJson').addEventListener('click', () => {
+            this.toggleView();
+        });
+
         // JSON editor
         document.getElementById('jsonEditor').addEventListener('input', (e) => {
             this.updateFromJSON(e.target.value);
@@ -401,15 +406,17 @@ class CVEditor {
     }
 
     toggleView() {
-        const formPanel = document.querySelector('.editor-panel');
+        const formPanel = document.getElementById('formPanel');
         const jsonPanel = document.getElementById('jsonPanel');
         const toggleBtn = document.getElementById('toggleView');
         
-        if (jsonPanel.style.display === 'none') {
+        if (jsonPanel.style.display === 'none' || jsonPanel.style.display === '') {
+            // Switch to JSON View
             formPanel.style.display = 'none';
             jsonPanel.style.display = 'flex';
             toggleBtn.innerHTML = '<i class="fas fa-edit"></i> Form View';
         } else {
+            // Switch to Form View
             formPanel.style.display = 'flex';
             jsonPanel.style.display = 'none';
             toggleBtn.innerHTML = '<i class="fas fa-code"></i> JSON View';
