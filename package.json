@@ -6,10 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/generate.js",
-    "generate": "node src/generate.js generate",
-    "test": "jest",
-    "lint": "eslint src/",
-    "format": "prettier --write src/"
+    "generate": "node src/generate.js generate"
   },
   "keywords": [
     "cv",
