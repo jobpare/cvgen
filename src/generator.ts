@@ -4,9 +4,9 @@ import chalk from "chalk";
 import puppeteer from 'puppeteer';
 import Handlebars from 'handlebars';
 import { configureAjv } from "./libs/ajv.js";
-import { schema as ValidationSchema } from './validation/schema.js';
+import type { ValidateFunction, AnySchema } from "ajv";
 import type { CVProfile } from './validation/schema.types.js';
-import type { ValidateFunction, JSONSchemaType } from "ajv";
+import ValidationSchema from "./validation/cv-schema.json" with { type: "json" };
 
 interface options {
     template: string
@@ -17,7 +17,6 @@ interface options {
 }
 
 const validator = Validator<CVProfile>(ValidationSchema)
-
 async function loadJsonData(filePath: string) {
     try {
         const data = await fs.readJson(filePath);
@@ -181,8 +180,8 @@ async function generate(options: options) {
     }
 }
 
-function Validator<T>(schema: JSONSchemaType<T>): ValidateFunction<T> {
-    const validator = configureAjv().compile(schema);
+function Validator<T>(schema: AnySchema): ValidateFunction<T> {
+    const validator = configureAjv().compile<T>(schema);
     return validator;
 }
 

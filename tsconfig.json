@@ -6,7 +6,7 @@
         "outDir": "./dist",
 
         "target": "es2020",
-        "module": "es2020",
+        "module": "esnext",
         "lib": ["es2020"],
         "moduleResolution": "node",
         "types": ["node"],
@@ -35,6 +35,7 @@
         "moduleDetection": "force",
         "skipLibCheck": true,
         "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true
     }
 }
