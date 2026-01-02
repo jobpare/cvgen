@@ -1,51 +1,55 @@
 {
-  "name": "jobpare-cv-generator",
-  "version": "1.0.0",
-  "description": "A local-first tool to generate beautiful, professional CVs from JSON data and HTML templates",
-  "main": "src/generate.js",
-  "type": "module",
-  "scripts": {
-    "start": "node src/generate.js",
-    "generate": "node src/generate.js generate",
-    "lint": "eslint src/ docs/js/",
-    "lint:fix": "eslint src/ docs/js/ --fix",
-    "format": "prettier --write src/ docs/",
-    "format:check": "prettier --check src/ docs/",
-    "check-all": "npm run lint && npm run format:check"
-  },
-  "keywords": [
-    "cv",
-    "resume",
-    "generator",
-    "pdf",
-    "html",
-    "templates",
-    "json"
-  ],
-  "author": "JobPare Team",
-  "license": "MIT",
-  "dependencies": {
-    "ajv": "^8.17.1",
-    "ajv-errors": "^3.0.0",
-    "ajv-formats": "^2.1.1",
-    "chalk": "^5.4.1",
-    "commander": "^11.0.0",
-    "fs-extra": "^11.3.0",
-    "handlebars": "^4.7.8",
-    "puppeteer": "^24.16.2"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.35.0",
-    "eslint": "^8.57.1",
-    "globals": "^16.4.0",
-    "jest": "^29.7.0",
-    "nodemon": "^3.0.1",
-    "prettier": "^3.0.3"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "bin": {
-    "jobpare-cv": "./src/generate.js"
-  }
+    "name": "jobpare-cv-generator",
+    "version": "1.0.0",
+    "description": "A local-first tool to generate beautiful, professional CVs from JSON data and HTML templates",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "check:type": "tsc --noEmit",
+        "start": "node dist/index.js",
+        "generate": "node dist/index.js generate",
+        "lint": "eslint src/ docs/js/",
+        "lint:fix": "eslint src/ docs/js/ --fix",
+        "format": "prettier --write src/ docs/",
+        "format:check": "prettier --check src/ docs/",
+        "check-all": "npm run lint && npm run format:check"
+    },
+    "keywords": [
+        "cv",
+        "resume",
+        "generator",
+        "pdf",
+        "html",
+        "templates",
+        "json"
+    ],
+    "author": "JobPare Team",
+    "license": "MIT",
+    "dependencies": {
+        "ajv": "^8.17.1",
+        "ajv-errors": "^3.0.0",
+        "ajv-formats": "^2.1.1",
+        "chalk": "^5.4.1",
+        "commander": "^11.0.0",
+        "fs-extra": "^11.3.0",
+        "handlebars": "^4.7.8",
+        "puppeteer": "^24.16.2"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.35.0",
+        "@types/fs-extra": "^11.0.4",
+        "eslint": "^8.57.1",
+        "globals": "^16.4.0",
+        "jest": "^29.7.0",
+        "nodemon": "^3.0.1",
+        "prettier": "^3.0.3",
+        "typescript": "^5.9.3"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "bin": {
+        "jobpare-cv": "./dist/index.js"
+    }
 }

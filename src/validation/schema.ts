@@ -1,4 +1,16 @@
-export default {
+import type { JSONSchemaType } from "ajv";
+import type { CVProfile } from "./schema.types";
+
+interface definitions {
+  definitions: {
+    dateOrMonthYear: {
+      type: "string";
+      pattern: string;
+    };
+  };
+}
+
+const schema: JSONSchemaType<CVProfile> & definitions = {
   'type': 'object',
   'required': ['profile', 'summary', 'education', 'skills'],
   'errorMessage': {
@@ -30,13 +42,13 @@ export default {
       'properties': {
         'name': { 'type': 'string', 'minLength': 1 },
         'position': { 'type': 'string', 'minLength': 1 },
-        'seniority_level': { 'type': 'string', 'minLength': 1 },
         'email': { 'type': 'string', 'format': 'email' },
         'phone': { 'type': 'string', 'minLength': 5 },
-        'location': { 'type': 'string', 'minLength': 1 },
-        'linkedin': { 'type': 'string', 'format': 'uri' },
-        'github': { 'type': 'string', 'format': 'uri' },
-        'website': { 'type': 'string', 'format': 'uri' }
+        'seniority_level': { 'type': 'string', 'minLength': 1, 'nullable': true },
+        'location': { 'type': 'string', 'minLength': 1, 'nullable': true },
+        'linkedin': { 'type': 'string', 'format': 'uri', 'nullable': true },
+        'github': { 'type': 'string', 'format': 'uri', 'nullable': true },
+        'website': { 'type': 'string', 'format': 'uri', 'nullable': true }
       },
       'additionalProperties': false
     },
@@ -47,6 +59,7 @@ export default {
     'experiences': {
       'type': 'array',
       'minItems': 1,
+      'nullable': true,
       'items': {
         'type': 'object',
         'required': ['company', 'position', 'location', 'start_date', 'description', 'achievements'],
@@ -68,8 +81,12 @@ export default {
           'company': { 'type': 'string', 'minLength': 1 },
           'position': { 'type': 'string', 'minLength': 1 },
           'location': { 'type': 'string', 'minLength': 1 },
-          'start_date': { '$ref': '#/$defs/dateOrMonthYear' },
-          'end_date': { '$ref': '#/$defs/dateOrMonthYearOrNull' },
+          'start_date': { '$ref': '#/definitions/dateOrMonthYear' },
+          'end_date': {
+            'type': 'string',
+            'pattern': '^(\\d{4}-\\d{2}-\\d{2}|(0[1-9]|1[0-2])/(19|20)\\d{2}|[Pp][Rr][Ee][Ss][Ee][Nn][Tt])$',
+            'nullable': true
+          },
           'description': { 'type': 'string', 'minLength': 1 },
           'achievements': {
             'type': 'array',
@@ -101,14 +118,15 @@ export default {
           'institution': { 'type': 'string', 'minLength': 1 },
           'degree': { 'type': 'string', 'minLength': 1 },
           'field_of_study': { 'type': 'string', 'minLength': 1 },
-          'end_date': { '$ref': '#/$defs/dateOrMonthYear' },
-          'gpa': { 'type': 'string', 'minLength': 1 }
+          'end_date': { '$ref': '#/definitions/dateOrMonthYear' },
+          'gpa': { 'type': 'string', 'minLength': 1, 'nullable': true }
         },
         'additionalProperties': false
       }
     },
     'skills': {
       'type': 'object',
+      'required': [],
       // Allow any skill category key, each value must be an array of non-empty strings
       'additionalProperties': {
         'type': 'array',
@@ -117,6 +135,7 @@ export default {
     },
     'projects': {
       'type': 'array',
+      'nullable': true,
       'items': {
         'type': 'object',
         'required': ['name', 'description', 'technologies'],
@@ -131,14 +150,15 @@ export default {
           'name': { 'type': 'string', 'minLength': 1 },
           'description': { 'type': 'string', 'minLength': 1 },
           'technologies': { 'type': 'array', 'minItems': 1, 'items': { 'type': 'string', 'minLength': 1 } },
-          'github_url': { 'type': 'string', 'format': 'uri' },
-          'live_url': { 'type': 'string', 'format': 'uri' }
+          'github_url': { 'type': 'string', 'format': 'uri', 'nullable': true },
+          'live_url': { 'type': 'string', 'format': 'uri', 'nullable': true }
         },
         'additionalProperties': false
       }
     },
     'certifications': {
       'type': 'array',
+      'nullable': true,
       'items': {
         'type': 'object',
         'required': ['name', 'issuer', 'date'],
@@ -151,14 +171,19 @@ export default {
         'properties': {
           'name': { 'type': 'string', 'minLength': 1 },
           'issuer': { 'type': 'string', 'minLength': 1 },
-          'date': { '$ref': '#/$defs/dateOrMonthYear' },
-          'expiry_date': { '$ref': '#/$defs/dateOrMonthYearOrNull' }
+          'date': { '$ref': '#/definitions/dateOrMonthYear' },
+          'expiry_date': {
+            'type': 'string',
+            'pattern': '^(\\d{4}-\\d{2}-\\d{2}|(0[1-9]|1[0-2])\\/(19|20)\\d{2})$',
+            'nullable': true
+          }
         },
         'additionalProperties': false
       }
     },
     'languages': {
       'type': 'array',
+      'nullable': true,
       'items': {
         'type': 'object',
         'required': ['language', 'proficiency'],
@@ -176,17 +201,13 @@ export default {
       }
     }
   },
-  '$defs': {
+  'definitions': {
     'dateOrMonthYear': {
       'type': 'string',
       'pattern': '^(\\d{4}-\\d{2}-\\d{2}|(0[1-9]|1[0-2])\\/(19|20)\\d{2})$'
-    },
-    'dateOrMonthYearOrNull': {
-      'type': ['string', 'null'],
-      'pattern': '^(\\d{4}-\\d{2}-\\d{2}|(0[1-9]|1[0-2])/(19|20)\\d{2}|[Pp][Rr][Ee][Ss][Ee][Nn][Tt])$'
     }
   },
   'additionalProperties': false
 };
 
-
+export { schema };
