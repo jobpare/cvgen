@@ -6,6 +6,10 @@ export function configureAjv(options?: Options) {
     const ajv = new Ajv({
         allErrors: true,
         strict: false,
+        code: {
+            es5: true,
+            source: true
+        },
         ...options
     });
 

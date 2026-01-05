@@ -4,7 +4,7 @@
         // File Layout
         "rootDir": "./src",
         "outDir": "./dist",
-
+        "allowJs": true,
         "target": "es2020",
         "module": "esnext",
         "lib": ["es2020"],
@@ -37,5 +37,12 @@
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true
-    }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.js",
+        "src/**/*.cjs",
+        "src/**/*.d.ts",
+        "src/**/*.d.cts"
+    ]
 }
