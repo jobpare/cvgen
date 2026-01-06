@@ -34,3 +34,12 @@ coverage/
 # Temporary folders
 tmp/
 temp/
+
+# Build files
+dist
+
+# Generated AJV validators
+src/validation/*validator.cjs
+
+# Schema
+src/validation/*.schema.json
