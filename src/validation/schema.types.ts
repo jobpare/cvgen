@@ -1,4 +1,10 @@
 /**
+ * Types for JSON Schema generation.
+ * JSDoc annotations are used for AJV validation rules.
+ */
+
+
+/**
  * @asString
  * @type string
  * @pattern ^(\d{4}-\d{2}-\d{2}|(0[1-9]|1[0-2])\/(19|20)\d{2})$
